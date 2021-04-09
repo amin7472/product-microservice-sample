@@ -1,0 +1,70 @@
+version: "3"
+
+services:
+  # $ mongo
+  mongodb:
+    container_name: mongodb
+    image: mongo:3.6.9
+    mem_limit: 350m
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
+
+  # $ mysql -uroot -h127.0.0.1 -p
+  mysql:
+    container_name: mysql
+    image: docker-hub.kian.digital/mysql/mysql-server:5.7
+    mem_limit: 350m
+    ports:
+      - "3306:3306"
+    environment:
+       MYSQL_ROOT_PASSWORD : rootpwd
+       MYSQL_DATABASE : review-db
+       MYSQL_USER : user
+       MYSQL_PASSWORD : pwd
+       MYSQL_ROOT_HOST: '%'
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-uuser", "-ppwd", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      
+
+  product:
+    container_name: product-service
+    build: microservice-product-service
+    mem_limit: 350m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongodb
+
+  recommendation:
+    container_name: recommendation-service
+    build: microservice-recommendation-service
+    mem_limit: 350m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - mongodb
+
+  review:
+    container_name: review-service
+    build: microservice-review-service
+    mem_limit: 600m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  product-composite:
+    container_name: product-composit-service
+    build: microservice-product-composite-service
+    mem_limit: 350m
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+

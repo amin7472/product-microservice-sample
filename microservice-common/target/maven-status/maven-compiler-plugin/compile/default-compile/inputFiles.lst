@@ -1,0 +1,16 @@
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/review/ReviewService.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/RecommendationSummary.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/recommendation/RecommendationService.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/http/ServiceUtil.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ServiceAddresses.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/exceptions/InvalidInputException.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ReviewSummary.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/http/GlobalControllerExceptionHandler.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/product/ProductService.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/http/HttpErrorInfo.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/recommendation/Recommendation.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/product/Product.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/review/Review.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/exceptions/NotFoundException.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ProductCompositeService.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ProductAggregate.java
