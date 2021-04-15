@@ -3,8 +3,7 @@ package com.packt.recommendationservice.rest;
 import com.packt.common.api.core.recommendation.Recommendation;
 import com.packt.common.api.core.recommendation.RecommendationService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping("/recommendation")
@@ -21,7 +20,7 @@ public class RecommendationController {
     }
 
     @GetMapping()
-    public List<Recommendation> getRecommendations(@RequestParam(value = "productId", required = true) int productId) {
+    public Flux<Recommendation> getRecommendations(@RequestParam(value = "productId", required = true) int productId) {
         return recommendationService.getRecommendations(productId);
     }
 

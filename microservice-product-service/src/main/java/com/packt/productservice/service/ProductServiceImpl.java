@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -30,36 +31,41 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product createProduct(Product body) {
-        try {
-            ProductEntity entity = mapper.map(body, ProductEntity.class);
-            ProductEntity newEntity = repository.save(entity);
+        if (body.getProductId() < 1) throw new InvalidInputException("Invalid productId: " + body.getProductId());
 
-            LOG.debug("createProduct: entity created for productId: {}", body.getProductId());
-            return mapper.map(newEntity, Product.class);
+        ProductEntity entity = mapper.map(body, ProductEntity.class);
+        Mono<Product> newEntity = repository.save(entity)
+                .log()
+                .onErrorMap(
+                        DuplicateKeyException.class,
+                        ex -> new InvalidInputException("Duplicate key, Product Id: " + body.getProductId()))
+                .map(e -> mapper.map(e, Product.class));
 
-        } catch (DuplicateKeyException dke) {
-            throw new InvalidInputException("Duplicate key, Product Id: " + body.getProductId());
-        }
+        return newEntity.block();
     }
 
     @Override
-    public Product getProduct(int productId) {
+    public Mono<Product> getProduct(int productId) {
         if (productId < 1) throw new InvalidInputException("Invalid productId: " + productId);
 
-        ProductEntity entity = repository.findByProductId(productId)
-                .orElseThrow(() -> new NotFoundException("No product found for productId: " + productId));
-
-        Product response = mapper.map(entity, Product.class);
-        response.setServiceAddress(serviceUtil.getServiceAddress());
-
-        LOG.debug("getProduct: found productId: {}", response.getProductId());
-
-        return response;
+        return repository.findByProductId(productId)
+                .switchIfEmpty(Mono.error(new NotFoundException("No product found for productId: " + productId)))
+                .log()
+                .map(productEntity -> mapper.map(productEntity, Product.class))
+                .map(product -> {
+                    product.setServiceAddress(serviceUtil.getServiceAddress());
+                    return product;
+                });
     }
 
     @Override
     public void deleteProduct(int productId) {
         LOG.debug("deleteProduct: tries to delete an entity with productId: {}", productId);
-        repository.findByProductId(productId).ifPresent(e -> repository.delete(e));
+        repository
+                .findByProductId(productId)
+                .log()
+                .map(productEntity -> repository.delete(productEntity))
+                .flatMap(voidMono -> voidMono)
+                .block();
     }
 }

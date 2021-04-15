@@ -1,4 +1,5 @@
 com/packt/common/api/core/product/ProductService.class
+com/packt/common/api/event/Event$Type.class
 com/packt/common/api/core/product/Product.class
 com/packt/common/api/core/recommendation/RecommendationService.class
 com/packt/common/api/product/ProductAggregate.class
@@ -7,9 +8,11 @@ com/packt/common/api/product/RecommendationSummary.class
 com/packt/common/api/product/ReviewSummary.class
 com/packt/common/util/http/HttpErrorInfo.class
 com/packt/common/util/exceptions/NotFoundException.class
+com/packt/common/api/event/Event.class
 com/packt/common/api/core/recommendation/Recommendation.class
 com/packt/common/util/exceptions/InvalidInputException.class
 com/packt/common/api/product/ProductCompositeService.class
+com/packt/common/util/exceptions/EventProcessingException.class
 com/packt/common/api/core/review/Review.class
 com/packt/common/api/core/review/ReviewService.class
 com/packt/common/util/http/GlobalControllerExceptionHandler.class

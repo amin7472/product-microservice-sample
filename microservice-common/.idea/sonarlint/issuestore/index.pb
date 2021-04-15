@@ -27,3 +27,9 @@ w
 Gsrc/main/java/com/packt/common/api/product/ProductCompositeService.java,c/8/c804dfbe2ccf163dba43e4703b5a784a19a2e7a5
 l
 <src/main/java/com/packt/common/api/core/product/Product.java,2/d/2d4501b7cae9c0c807808c13df4d81adbfe9697a
+|
+Lsrc/main/java/com/packt/common/util/exceptions/EventProcessingException.java,2/4/2464b307edab471ccbe7a2ae8c505dab4e1d1cec
+m
+=src/main/java/com/packt/common/api/product/ReviewSummary.java,f/a/fac0a9d02880c4cb47d5e688fce21c4001a4528c
+c
+3src/main/java/com/packt/common/api/event/Event.java,c/b/cbdaec93a96743a12bfe092c2570b3012451416e

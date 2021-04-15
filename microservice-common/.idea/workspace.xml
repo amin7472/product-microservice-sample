@@ -2,19 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15505955-37af-4060-a6fe-ce8317e2654f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/microservice-common.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/ProductCompositeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/ProductCompositeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/RecommendationSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/RecommendationSummary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/ReviewSummary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/packt/common/api/product/ReviewSummary.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/common.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/common.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/IsSameEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/IsSameEventTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/MessagingTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/stream/MessageProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/stream/MessageProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/stream/MessageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/ProductServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/ProductServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/persistence/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/persistence/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/test/java/com/packt/productservice/PersistenceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/test/java/com/packt/productservice/PersistenceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/test/java/com/packt/productservice/ProductServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/test/java/com/packt/productservice/ProductServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/persistence/RecommendationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/persistence/RecommendationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/rest/RecommendationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/rest/RecommendationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/service/RecommendationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/java/com/packt/recommendationservice/service/RecommendationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/test/java/com/packt/recommendationservice/PersistenceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/test/java/com/packt/recommendationservice/PersistenceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/src/test/java/com/packt/recommendationservice/RecommendationServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/src/test/java/com/packt/recommendationservice/RecommendationServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/ReviewServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/ReviewServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/rest/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/rest/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/service/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/src/main/java/com/packt/reviewservice/service/ReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/src/test/java/com/packt/reviewservice/ReviewServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/src/test/java/com/packt/reviewservice/ReviewServiceApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +41,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="MavenRunner">
     <option name="skipTests" value="true" />
@@ -48,6 +67,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/packt/common/api" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/packt/common/util/exceptions" />
       <recent name="$PROJECT_DIR$/src/main/java/com/packt/common" />
     </key>
   </component>
@@ -71,6 +92,9 @@
       <workItem from="1617644798611" duration="181000" />
       <workItem from="1617697156852" duration="599000" />
       <workItem from="1617701414717" duration="2394000" />
+      <workItem from="1617955969911" duration="1956000" />
+      <workItem from="1617958892316" duration="1372000" />
+      <workItem from="1618037486779" duration="645000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <created>1614948160321</created>
@@ -109,34 +133,42 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="775" y="311" width="424" height="491" key="FileChooserDialogImpl/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1612507354541" />
-    <state width="1802" height="358" key="GridCell.Tab.0.bottom" timestamp="1617629766271">
+    <state width="1802" height="339" key="GridCell.Tab.0.bottom" timestamp="1618061204055">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1802" height="339" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
     <state width="1802" height="358" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1617629766271" />
     <state width="1874" height="162" key="GridCell.Tab.0.bottom/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348274" />
     <state width="1810" height="245" key="GridCell.Tab.0.bottom/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
-    <state width="1802" height="358" key="GridCell.Tab.0.center" timestamp="1617629766271">
+    <state width="1802" height="358" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334316" />
+    <state width="1802" height="339" key="GridCell.Tab.0.center" timestamp="1618061204055">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1802" height="339" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
     <state width="1802" height="358" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1617629766271" />
     <state width="1874" height="162" key="GridCell.Tab.0.center/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348273" />
     <state width="1810" height="245" key="GridCell.Tab.0.center/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
-    <state width="1802" height="358" key="GridCell.Tab.0.left" timestamp="1617629766271">
+    <state width="1802" height="358" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
+    <state width="1802" height="339" key="GridCell.Tab.0.left" timestamp="1618061204055">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1802" height="339" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
     <state width="1802" height="358" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1617629766271" />
     <state width="1874" height="162" key="GridCell.Tab.0.left/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348273" />
     <state width="1810" height="245" key="GridCell.Tab.0.left/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869586" />
-    <state width="1802" height="358" key="GridCell.Tab.0.right" timestamp="1617629766271">
+    <state width="1802" height="358" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
+    <state width="1802" height="339" key="GridCell.Tab.0.right" timestamp="1618061204055">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state width="1802" height="339" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
     <state width="1802" height="358" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1617629766271" />
     <state width="1874" height="162" key="GridCell.Tab.0.right/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348274" />
     <state width="1810" height="245" key="GridCell.Tab.0.right/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
+    <state width="1802" height="358" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
     <state x="498" y="198" width="1022" height="737" key="SettingsEditor" timestamp="1613897039551">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -150,5 +182,9 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="586" y="257" width="802" height="599" key="new project wizard/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1612505219467" />
+    <state x="660" y="252" width="672" height="677" key="run.anything.popup" timestamp="1617957642584">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="660" y="252" width="672" height="677" key="run.anything.popup/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617957642584" />
   </component>
 </project>

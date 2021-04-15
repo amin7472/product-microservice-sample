@@ -1,70 +1,153 @@
-version: "3"
+version: '2.1'
 
 services:
+  product:
+    build: microservice-product-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=0
+    depends_on:
+      - kafka
+      - mongodb
+
+  product-p1:
+    build: microservice-product-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=1
+    depends_on:
+      - kafka
+      - mongodb
+
+  recommendation:
+    build: microservice-recommendation-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=0
+    depends_on:
+      - kafka
+      - mongodb
+
+  recommendation-p1:
+    build: microservice-recommendation-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=1
+    depends_on:
+      - kafka
+      - mongodb
+
+  review:
+    build: microservice-review-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=0
+    depends_on:
+      mysql:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+
+  review-p1:
+    build: microservice-review-service
+    mem_limit: 550m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_PARTITIONED=true
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCECOUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_INPUT_CONSUMER_INSTANCEINDEX=1
+    depends_on:
+      mysql:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+
+  product-composite:
+    build: microservice-product-composite-service
+    mem_limit: 550m
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - MANAGEMENT_HEALTH_RABBIT_ENABLED=false
+      - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-PRODUCTS_PRODUCER_PARTITION-KEY-EXPRESSION=payload.key
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-PRODUCTS_PRODUCER_PARTITION-COUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-RECOMMENDATIONS_PRODUCER_PARTITION-KEY-EXPRESSION=payload.key
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-RECOMMENDATIONS_PRODUCER_PARTITION-COUNT=2
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-REVIEWS_PRODUCER_PARTITION-KEY-EXPRESSION=payload.key
+      - SPRING_CLOUD_STREAM_BINDINGS_OUTPUT-REVIEWS_PRODUCER_PARTITION-COUNT=2
+    depends_on:
+      - kafka
+
   # $ mongo
   mongodb:
-    container_name: mongodb
-    image: mongo:3.6.9
-    mem_limit: 350m
+    image: docker-hub.kian.digital/mongo:3.6.9
+    mem_limit: 550m
     ports:
       - "27017:27017"
     command: mongod --smallfiles
 
   # $ mysql -uroot -h127.0.0.1 -p
   mysql:
-    container_name: mysql
-    image: docker-hub.kian.digital/mysql/mysql-server:5.7
-    mem_limit: 350m
+    image: docker-hub.kian.digital/mysql:5.7
+    mem_limit: 550m
     ports:
       - "3306:3306"
     environment:
-       MYSQL_ROOT_PASSWORD : rootpwd
-       MYSQL_DATABASE : review-db
-       MYSQL_USER : user
-       MYSQL_PASSWORD : pwd
-       MYSQL_ROOT_HOST: '%'
+      - MYSQL_ROOT_PASSWORD=rootpwd
+      - MYSQL_DATABASE=review-db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pwd
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-uuser", "-ppwd", "-h", "localhost"]
+      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
       interval: 10s
       timeout: 5s
       retries: 10
-      
-
-  product:
-    container_name: product-service
-    build: microservice-product-service
-    mem_limit: 350m
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      - mongodb
-
-  recommendation:
-    container_name: recommendation-service
-    build: microservice-recommendation-service
-    mem_limit: 350m
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      - mongodb
-
-  review:
-    container_name: review-service
-    build: microservice-review-service
-    mem_limit: 600m
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      mysql:
-        condition: service_healthy
-
-  product-composite:
-    container_name: product-composit-service
-    build: microservice-product-composite-service
-    mem_limit: 350m
+  kafka:
+    image: docker-hub.kian.digital/wurstmeister/kafka:2.12-2.1.0
+    mem_limit: 550m
     ports:
-      - "8080:8080"
+      - "9092:9092"
     environment:
-      - SPRING_PROFILES_ACTIVE=docker
+      - KAFKA_AUTO_CREATE_TOPICS_ENABLE=true
+      - KAFKA_ADVERTISED_HOST_NAME=kafka
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    depends_on:
+      - zookeeper
 
-
+  zookeeper:
+    image: docker-hub.kian.digital/wurstmeister/zookeeper:3.4.6
+    mem_limit: 550m
+    ports:
+      - "2181:2181"
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=zookeeper

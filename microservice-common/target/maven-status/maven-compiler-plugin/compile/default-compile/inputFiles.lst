@@ -11,6 +11,8 @@
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/recommendation/Recommendation.java
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/product/Product.java
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/core/review/Review.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/event/Event.java
+/home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/exceptions/EventProcessingException.java
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/util/exceptions/NotFoundException.java
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ProductCompositeService.java
 /home/amin/Tutorial/microservice-packt/Workspace/microservice-common/src/main/java/com/packt/common/api/product/ProductAggregate.java

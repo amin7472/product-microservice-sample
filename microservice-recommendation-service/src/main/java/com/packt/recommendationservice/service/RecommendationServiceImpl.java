@@ -10,9 +10,8 @@ import com.packt.recommendationservice.persistence.RecommendationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
@@ -33,10 +32,16 @@ public class RecommendationServiceImpl implements RecommendationService {
     public Recommendation createRecommendation(Recommendation body) {
         try {
             RecommendationEntity entity = mapper.map(body, RecommendationEntity.class);
-            RecommendationEntity newEntity = recommendationRepository.save(entity);
+            Mono<Recommendation> newEntity = recommendationRepository
+                    .save(entity)
+                    .log()
+                    .onErrorMap(DuplicateKeyException.class,
+                            ex -> new InvalidInputException("Duplicate key, Product Id: "
+                                    + body.getProductId() + ", Recommendation Id:" + body.getRecommendationId()))
+                    .map(e -> mapper.map(e, Recommendation.class));
 
             log.debug("createRecommendation: created a recommendation entity: {}/{}", body.getProductId(), body.getRecommendationId());
-            return mapper.map(newEntity, Recommendation.class);
+            return newEntity.block();
 
         } catch (DuplicateKeyException dke) {
             throw new InvalidInputException("Duplicate key, Product Id: " + body.getProductId() + ", Recommendation Id:" + body.getRecommendationId());
@@ -44,19 +49,16 @@ public class RecommendationServiceImpl implements RecommendationService {
     }
 
     @Override
-    public List<Recommendation> getRecommendations(int productId) {
+    public Flux<Recommendation> getRecommendations(int productId) {
         if (productId < 1) throw new InvalidInputException("Invalid productId: " + productId);
-
-        List<RecommendationEntity> entityList = recommendationRepository.findByProductId(productId);
-        List<Recommendation> list = entityList
-                .stream()
+        return recommendationRepository
+                .findByProductId(productId)
+                .log()
                 .map(recommendationEntity -> mapper.map(recommendationEntity, Recommendation.class))
-                .collect(Collectors.toList());
-        list.forEach(e -> e.setServiceAddress(serviceUtil.getServiceAddress()));
-
-        log.debug("getRecommendations: response size: {}", list.size());
-
-        return list;
+                .map(e -> {
+                    e.setServiceAddress(serviceUtil.getServiceAddress());
+                    return e;
+                });
     }
 
     @Override

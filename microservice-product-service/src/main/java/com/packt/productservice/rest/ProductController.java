@@ -3,6 +3,7 @@ package com.packt.productservice.rest;
 import com.packt.common.api.core.product.Product;
 import com.packt.common.api.core.product.ProductService;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 
 @RestController
@@ -16,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public Product getProduct(@PathVariable("productId") int productId) {
+    public Mono<Product> getProduct(@PathVariable("productId") int productId) {
         return productService.getProduct(productId);
     }
 

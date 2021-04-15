@@ -9,6 +9,7 @@ import com.packt.common.util.http.ServiceUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 public class ProductCompositeServiceImpl implements ProductCompositeService {
 
     private final ServiceUtil serviceUtil;
-    private ProductCompositeIntegration integration;
+    private final ProductCompositeIntegration integration;
 
     @Autowired
     public ProductCompositeServiceImpl(ServiceUtil serviceUtil, ProductCompositeIntegration integration) {
@@ -51,42 +52,42 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
                 });
             }
 
-            log.debug("createCompositeProduct: composite entites created for productId: {}", body.getProductId());
+            log.debug("createCompositeProduct: composite entities created for productId: {}", body.getProductId());
 
         } catch (RuntimeException re) {
-            log.warn("createCompositeProduct failed", re);
+            log.warn("createCompositeProduct failed: {}", re.toString());
             throw re;
         }
     }
 
     @Override
-    public ProductAggregate getCompositeProduct(int productId) {
-        log.debug("getCompositeProduct: lookup a product aggregate for productId: {}", productId);
-
-        Product product = integration.getProduct(productId);
-        if (product == null) throw new NotFoundException("No product found for productId: " + productId);
-
-        List<Recommendation> recommendations = integration.getRecommendations(productId);
-
-        List<Review> reviews = integration.getReviews(productId);
-
-        log.debug("getCompositeProduct: aggregate entity found for productId: {}", productId);
-
-        return createProductAggregate(product, recommendations, reviews, serviceUtil.getServiceAddress());
+    public Mono<ProductAggregate> getCompositeProduct(int productId) {
+        return Mono.zip(
+                values -> createProductAggregate((Product) values[0], (List<Recommendation>) values[1], (List<Review>) values[2], serviceUtil.getServiceAddress()),
+                integration.getProduct(productId),
+                integration.getRecommendations(productId).collectList(),
+                integration.getReviews(productId).collectList())
+                .doOnError(ex -> log.warn("getCompositeProduct failed: {}", ex.toString()))
+                .log();
     }
 
     @Override
     public void deleteCompositeProduct(int productId) {
 
-        log.debug("deleteCompositeProduct: Deletes a product aggregate for productId: {}", productId);
+        try {
 
-        integration.deleteProduct(productId);
+            log.debug("deleteCompositeProduct: Deletes a product aggregate for productId: {}", productId);
 
-        integration.deleteRecommendations(productId);
+            integration.deleteProduct(productId);
+            integration.deleteRecommendations(productId);
+            integration.deleteReviews(productId);
 
-        integration.deleteReviews(productId);
+            log.debug("deleteCompositeProduct: aggregate entities deleted for productId: {}", productId);
 
-        log.debug("getCompositeProduct: aggregate entities deleted for productId: {}", productId);
+        } catch (RuntimeException re) {
+            log.warn("deleteCompositeProduct failed: {}", re.toString());
+            throw re;
+        }
     }
 
     private ProductAggregate createProductAggregate(Product product, List<Recommendation> recommendations, List<Review> reviews, String serviceAddress) {
@@ -103,7 +104,7 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
                         .collect(Collectors.toList());
 
         // 3. Copy summary review info, if available
-        List<ReviewSummary> reviewSummaries = (reviews == null) ? null :
+        List<ReviewSummary> reviewSummaries = (reviews == null)  ? null :
                 reviews.stream()
                         .map(r -> new ReviewSummary(r.getReviewId(), r.getAuthor(), r.getSubject(), r.getContent()))
                         .collect(Collectors.toList());

@@ -3,8 +3,7 @@ package com.packt.reviewservice.rest;
 import com.packt.common.api.core.review.Review;
 import com.packt.common.api.core.review.ReviewService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 @RestController
 public class ReviewController {
@@ -27,7 +26,7 @@ public class ReviewController {
             value = {"/review"},
             produces = {"application/json"}
     )
-    public List<Review> getReviews(@RequestParam(value = "productId", required = true) int productId) {
+    public Flux<Review> getReviews(@RequestParam(value = "productId", required = true) int productId) {
         return reviewService.getReviews(productId);
     }
 
