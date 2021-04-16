@@ -3,16 +3,12 @@ version: "3"
 services:
 
   eureka:
-    container_name: eureka-service
     build: cloud-eureka-server
-    mem_limit: 250m
     ports:
       - "8761:8761"
       
   product:
     build: microservice-product-service
-    container_name: product-service
-    mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
@@ -22,8 +18,6 @@ services:
 
   recommendation:
     build: microservice-recommendation-service
-    container_name: recommendation-service
-    mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
@@ -33,8 +27,6 @@ services:
 
   review:
     build: microservice-review-service
-    container_name: review-service
-    mem_limit: 350m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
@@ -46,8 +38,6 @@ services:
 
   product-composite:
     build: microservice-product-composite-service
-    container_name: product-composite-service
-    mem_limit: 350m
     ports:
       - "8080:8080"
     environment:
@@ -58,14 +48,12 @@ services:
 
   mongodb:
     image: docker-hub.kian.digital/mongo:3.6.9
-    mem_limit: 350m
     ports:
       - "27017:27017"
     command: mongod --smallfiles
 
   mysql:
     image: docker-hub.kian.digital/mysql:5.7
-    mem_limit: 350m
     ports:
       - "3306:3306"
     environment:
@@ -81,7 +69,6 @@ services:
       
   kafka:
     image: docker-hub.kian.digital/wurstmeister/kafka:2.12-2.1.0
-    mem_limit: 350m
     ports:
       - "9092:9092"
     environment:
@@ -94,7 +81,6 @@ services:
 
   zookeeper:
     image: docker-hub.kian.digital/wurstmeister/zookeeper:3.4.6
-    mem_limit: 350m
     ports:
       - "2181:2181"
     environment:
