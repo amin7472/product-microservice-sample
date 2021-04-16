@@ -28,7 +28,7 @@ public class PersistenceTests {
 
     @Before
     public void setupDb() {
-        repository.deleteAll();
+        repository.deleteAll().block();
 
         RecommendationEntity entity = new RecommendationEntity(1, 2, "a", 3, "c");
         savedEntity = repository.save(entity).block();
@@ -46,7 +46,7 @@ public class PersistenceTests {
         RecommendationEntity foundEntity = repository.findById(newEntity.getId()).block();
         assertEqualsRecommendation(newEntity, foundEntity);
 
-        assertEquals(2, (long) repository.count().block());
+        assertEquals(2, (long)repository.count().block());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class PersistenceTests {
         repository.save(savedEntity).block();
 
         RecommendationEntity foundEntity = repository.findById(savedEntity.getId()).block();
-        assertEquals(1, (long) foundEntity.getVersion());
+        assertEquals(1, (long)foundEntity.getVersion());
         assertEquals("a2", foundEntity.getAuthor());
     }
 
@@ -76,7 +76,7 @@ public class PersistenceTests {
     @Test(expected = DuplicateKeyException.class)
     public void duplicateError() {
         RecommendationEntity entity = new RecommendationEntity(1, 2, "a", 3, "c");
-        repository.save(entity);
+        repository.save(entity).block();
     }
 
     @Test
@@ -88,31 +88,30 @@ public class PersistenceTests {
 
         // Update the entity using the first entity object
         entity1.setAuthor("a1");
-        repository.save(entity1);
+        repository.save(entity1).block();
 
         //  Update the entity using the second entity object.
         // This should fail since the second entity now holds a old version number, i.e. a Optimistic Lock Error
         try {
             entity2.setAuthor("a2");
-            repository.save(entity2);
+            repository.save(entity2).block();
 
             fail("Expected an OptimisticLockingFailureException");
-        } catch (OptimisticLockingFailureException e) {
-        }
+        } catch (OptimisticLockingFailureException e) {}
 
         // Get the updated entity from the database and verify its new sate
         RecommendationEntity updatedEntity = repository.findById(savedEntity.getId()).block();
-        assertEquals(1, (int) updatedEntity.getVersion());
+        assertEquals(1, (int)updatedEntity.getVersion());
         assertEquals("a1", updatedEntity.getAuthor());
     }
 
     private void assertEqualsRecommendation(RecommendationEntity expectedEntity, RecommendationEntity actualEntity) {
-        assertEquals(expectedEntity.getId(), actualEntity.getId());
-        assertEquals(expectedEntity.getVersion(), actualEntity.getVersion());
-        assertEquals(expectedEntity.getProductId(), actualEntity.getProductId());
+        assertEquals(expectedEntity.getId(),               actualEntity.getId());
+        assertEquals(expectedEntity.getVersion(),          actualEntity.getVersion());
+        assertEquals(expectedEntity.getProductId(),        actualEntity.getProductId());
         assertEquals(expectedEntity.getRecommendationId(), actualEntity.getRecommendationId());
-        assertEquals(expectedEntity.getAuthor(), actualEntity.getAuthor());
-        assertEquals(expectedEntity.getRating(), actualEntity.getRating());
-        assertEquals(expectedEntity.getContent(), actualEntity.getContent());
+        assertEquals(expectedEntity.getAuthor(),           actualEntity.getAuthor());
+        assertEquals(expectedEntity.getRating(),           actualEntity.getRating());
+        assertEquals(expectedEntity.getContent(),          actualEntity.getContent());
     }
 }
