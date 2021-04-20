@@ -4,9 +4,14 @@ services:
 
   eureka:
     build: cloud-eureka-server
+
+  gateway:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build: cloud-gateway
     ports:
-      - "8761:8761"
-      
+      - "8080:8080"
+       
   product:
     build: microservice-product-service
     environment:
@@ -38,8 +43,6 @@ services:
 
   product-composite:
     build: microservice-product-composite-service
-    ports:
-      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
