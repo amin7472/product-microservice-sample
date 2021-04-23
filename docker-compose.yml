@@ -12,6 +12,12 @@ services:
     ports:
       - "8080:8080"
        
+  auth-server:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build: microservice-authorization-server
+    mem_limit: 350m
+          
   product:
     build: microservice-product-service
     environment:
