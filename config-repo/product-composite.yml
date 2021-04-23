@@ -48,76 +48,59 @@ api:
         The implementation of the delete method is idempotent, i.e. it can be called several times with the same response.
         This means that a delete request of a non existing product will return <b>200 Ok</b>.
 
-server:
-  port: 7000
-  error:
-    include-message: always
+server.port: 7000
+server.error.include-message: always
 
-app:
-  eureka-username: u
-  eureka-password: p
-  eureka-server: localhost
-  auth-server: localhost
+ribbon.ServerListRefreshInterval: 5000
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
-    initialInstanceInfoReplicationIntervalSeconds: 5
-    registryFetchIntervalSeconds: 5
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 5
+ribbon.NFLoadBalancerPingInterval: 5
 
-spring:
-  application:
-    name: product-composite
-  cloud:
-    stream:
-      kafka:
-        binder:
-          brokers: 127.0.0.1:9092
-          auto-create-topics: true
-          configuration:
-            auto.offset.reset: latest
-      bindings:
-        output-products:
-          destination: products
-          producer:
-            required-groups: auditGroup
-        output-recommendations:
-          destination: recommendations
-          producer:
-            required-groups: auditGroup
-        output-reviews:
-          destination: reviews
-          producer:
-            required-groups: auditGroup
+spring.cloud.stream:
+  defaultBinder: kafka
+  default.contentType: application/json
+  bindings:
+    output-products:
+      destination: products
+      producer:
+        required-groups: auditGroup
+    output-recommendations:
+      destination: recommendations
+      producer:
+        required-groups: auditGroup
+    output-reviews:
+      destination: reviews
+      producer:
+        required-groups: auditGroup
+
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
 
 logging:
   level:
     root: INFO
     se.magnus: DEBUG
-
-management:
-  endpoint:
-    health:
-      show-details: "ALWAYS"
-  web:
-    exposure:
-      include: "*"
-
-
-
-spring.security.oauth2.resourceserver.jwt.jwk-set-uri: http://${app.auth-server}:9999/.well-known/jwks.json
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
 ---
 spring.profiles: docker
 
 server.port: 8080
 
-spring.cloud.stream.kafka.binder.brokers: kafka
+---
+spring.profiles: streaming_partitioned
 
-app:
-  eureka-server: eureka
-  auth-server: auth-server
+spring.cloud.stream.bindings.output-products.producer:
+  partition-key-expression: payload.key
+  partition-count: 2
+
+spring.cloud.stream.bindings.output-recommendations.producer:
+  partition-key-expression: payload.key
+  partition-count: 2
+
+spring.cloud.stream.bindings.output-reviews.producer:
+  partition-key-expression: payload.key
+  partition-count: 2
+
+---
+spring.profiles: kafka
+
+spring.cloud.stream.defaultBinder: kafka
