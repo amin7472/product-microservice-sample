@@ -1,13 +1,28 @@
 version: "3"
 
 services:
+  config-server:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,native
+      - ENCRYPT_KEY=${CONFIG_SERVER_ENCRYPT_KEY}
+      - SPRING_SECURITY_USER_NAME=${CONFIG_SERVER_USR}
+      - SPRING_SECURITY_USER_PASSWORD=${CONFIG_SERVER_PWD}
+    volumes:
+      - $PWD/config-repo:/config-repo
+    build: spring-cloud/config-server
 
   eureka:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     build: cloud-eureka-server
 
   gateway:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     build: cloud-gateway
     ports:
       - "8443:8443"
@@ -15,13 +30,17 @@ services:
   auth-server:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     build: microservice-authorization-server
-    mem_limit: 350m
+
           
   product:
     build: microservice-product-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
     depends_on:
       - kafka
@@ -31,6 +50,8 @@ services:
     build: microservice-recommendation-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
     depends_on:
       - kafka
@@ -40,6 +61,8 @@ services:
     build: microservice-review-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
     depends_on:
       mysql:
@@ -51,6 +74,8 @@ services:
     build: microservice-product-composite-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
     depends_on:
       - kafka
