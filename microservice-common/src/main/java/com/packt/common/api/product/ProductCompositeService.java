@@ -12,10 +12,10 @@ public interface ProductCompositeService {
 
     /**
      * Sample usage:
-     * <p>
+     *
      * curl -X POST $HOST:$PORT/product-composite \
-     * -H "Content-Type: application/json" --data \
-     * '{"productId":123,"name":"product 123","weight":123}'
+     *   -H "Content-Type: application/json" --data \
+     *   '{"productId":123,"name":"product 123","weight":123}'
      *
      * @param body
      */
@@ -27,9 +27,9 @@ public interface ProductCompositeService {
             @ApiResponse(code = 422, message = "Unprocessable entity, input parameters caused the processing to fail. See response message for more information.")
     })
     @PostMapping(
-            value = "/product-composite",
+            value    = "/product-composite",
             consumes = "application/json")
-    void createCompositeProduct(@RequestBody ProductAggregate body);
+    Mono<Void> createCompositeProduct(@RequestBody ProductAggregate body);
 
     /**
      * Sample usage: curl $HOST:$PORT/product-composite/1
@@ -46,14 +46,13 @@ public interface ProductCompositeService {
             @ApiResponse(code = 422, message = "Unprocessable entity, input parameters caused the processing to fail. See response message for more information.")
     })
     @GetMapping(
-            value = "/product-composite/{productId}",
+            value    = "/product-composite/{productId}",
             produces = "application/json")
     Mono<ProductAggregate> getCompositeProduct(@PathVariable int productId);
 
-
     /**
      * Sample usage:
-     * <p>
+     *
      * curl -X DELETE $HOST:$PORT/product-composite/1
      *
      * @param productId
@@ -66,5 +65,5 @@ public interface ProductCompositeService {
             @ApiResponse(code = 422, message = "Unprocessable entity, input parameters caused the processing to fail. See response message for more information.")
     })
     @DeleteMapping(value = "/product-composite/{productId}")
-    void deleteCompositeProduct(@PathVariable int productId);
+    Mono<Void> deleteCompositeProduct(@PathVariable int productId);
 }

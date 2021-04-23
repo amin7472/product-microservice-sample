@@ -3,6 +3,7 @@ package com.packt.eurekaserver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,17 @@ public class EurekaServerApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Value("${app.eureka-username}")
+	private String username;
+
+	@Value("${app.eureka-password}")
+	private String password;
+
 	@Autowired
+	public void setTestRestTemplate(TestRestTemplate testRestTemplate) {
+		this.testRestTemplate = testRestTemplate.withBasicAuth(username, password);
+	}
+
 	private TestRestTemplate testRestTemplate;
 
 	@Test
