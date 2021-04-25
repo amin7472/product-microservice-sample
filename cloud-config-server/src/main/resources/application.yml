@@ -2,35 +2,20 @@ server.port: 8888
 
 spring.cloud.config.server.native.searchLocations: file:${PWD}/config-repo
 
+# WARNING: Exposing all management endpoints over http should only be used during development, must be locked down in production!
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
-
-app:
-  eureka-username: admin
-  eureka-password: '{cipher}8659e0af788d9a3a87b335172a837bdfc11ff49fefed2a2017dd6fd119c1341f' #admin
-  eureka-server: localhost
-  auth-server: localhost
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
-    initialInstanceInfoReplicationIntervalSeconds: 5
-    registryFetchIntervalSeconds: 5
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 5
 
 logging:
   level:
     root: info
+
 spring:
-  application.name: config-server
   security:
     user:
-      name: admin
-      password: '{cipher}8659e0af788d9a3a87b335172a837bdfc11ff49fefed2a2017dd6fd119c1341f'
-
+      name: admin1
+      password: admin1
 ---
 spring.profiles: docker
-spring.cloud.config.server.native.searchLocations: file:/config-repo
+spring.cloud.config.server.native.searchLocations: file:${PWD}/config-repo
+

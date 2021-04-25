@@ -24,8 +24,8 @@ public class HealthCheckConfiguration {
 
     @Autowired
     public HealthCheckConfiguration(
-        WebClient.Builder webClientBuilder,
-        HealthAggregator healthAggregator
+            WebClient.Builder webClientBuilder,
+            HealthAggregator healthAggregator
     ) {
         this.webClientBuilder = webClientBuilder;
         this.healthAggregator = healthAggregator;
@@ -36,21 +36,22 @@ public class HealthCheckConfiguration {
 
         ReactiveHealthIndicatorRegistry registry = new DefaultReactiveHealthIndicatorRegistry(new LinkedHashMap<>());
 
+        registry.register("auth-server",       () -> getHealth("http://auth-server"));
         registry.register("product",           () -> getHealth("http://product"));
         registry.register("recommendation",    () -> getHealth("http://recommendation"));
         registry.register("review",            () -> getHealth("http://review"));
         registry.register("product-composite", () -> getHealth("http://product-composite"));
 
         return new CompositeReactiveHealthIndicator(healthAggregator, registry);
-   	}
+    }
 
     private Mono<Health> getHealth(String url) {
         url += "/actuator/health";
         LOG.debug("Will call the Health API on URL: {}", url);
         return getWebClient().get().uri(url).retrieve().bodyToMono(String.class)
-            .map(s -> new Health.Builder().up().build())
-            .onErrorResume(ex -> Mono.just(new Health.Builder().down(ex).build()))
-            .log();
+                .map(s -> new Health.Builder().up().build())
+                .onErrorResume(ex -> Mono.just(new Health.Builder().down(ex).build()))
+                .log();
     }
 
     private WebClient getWebClient() {
