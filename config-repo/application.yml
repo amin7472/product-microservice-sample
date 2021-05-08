@@ -19,6 +19,8 @@ spring.cloud.stream.kafka.binder:
   brokers: 127.0.0.1
   defaultBrokerPort: 9092
 
+spring.zipkin.sender.type: kafka
+spring.sleuth.sampler.probability: 1.0
 
 management.endpoint.health.show-details: "ALWAYS"
 management.endpoints.web.exposure.include: "*"
