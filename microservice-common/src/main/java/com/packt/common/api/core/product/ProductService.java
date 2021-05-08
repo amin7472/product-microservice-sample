@@ -28,10 +28,13 @@ public interface ProductService {
      * @return the product, if found, else null
      */
     @GetMapping(
-            value = "/product/{productId}",
+            value    = "/product/{productId}",
             produces = "application/json")
-    Mono<Product> getProduct(@PathVariable int productId);
-
+    Mono<Product> getProduct(
+            @PathVariable int productId,
+            @RequestParam(value = "delay", required = false, defaultValue = "0") int delay,
+            @RequestParam(value = "faultPercent", required = false, defaultValue = "0") int faultPercent
+    );
     /**
      * Sample usage:
      * <p>

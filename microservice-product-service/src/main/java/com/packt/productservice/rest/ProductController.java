@@ -16,9 +16,12 @@ public class ProductController {
         this.productService = productService;
     }
 
+
     @GetMapping("/{productId}")
-    public Mono<Product> getProduct(@PathVariable("productId") int productId) {
-        return productService.getProduct(productId);
+    public Mono<Product> getProduct(@PathVariable int productId,
+                                    @RequestParam(value = "delay", required = false, defaultValue = "0") int delay,
+                                    @RequestParam(value = "faultPercent", required = false, defaultValue = "0") int faultPercent) {
+        return productService.getProduct(productId, delay, faultPercent);
     }
 
 

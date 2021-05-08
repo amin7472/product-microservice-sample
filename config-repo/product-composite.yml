@@ -80,6 +80,33 @@ logging:
     se.magnus: DEBUG
     org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
+
+app.product-service.timeoutSec: 2
+
+resilience4j.retry:
+  backends:
+    product:
+      maxRetryAttempts: 3
+      waitDuration: 1000
+      retryExceptions:
+        - org.springframework.web.reactive.function.client.WebClientResponseException$InternalServerError
+
+management.health.circuitbreakers.enabled: true
+
+resilience4j.circuitbreaker:
+  backends:
+    product:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 5
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+      waitInterval: 10000
+      ringBufferSizeInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      ignoreExceptions:
+        - com.packt.common.util.exceptions.InvalidInputException
+        - com.packt.common.util.exceptions.NotFoundException
+
 ---
 spring.profiles: docker
 

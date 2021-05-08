@@ -10,6 +10,8 @@ services:
     volumes:
       - $PWD/config-repo:/config-repo
     build: cloud-config-server
+    ports:
+      - "8888:8888"
 
   eureka:
     environment:

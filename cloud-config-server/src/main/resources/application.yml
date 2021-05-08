@@ -13,9 +13,9 @@ logging:
 spring:
   security:
     user:
-      name: admin1
-      password: admin1
+      name: admin
+      password: admin
 ---
 spring.profiles: docker
-spring.cloud.config.server.native.searchLocations: file:${PWD}/config-repo
+spring.cloud.config.server.native.searchLocations: file:/config-repo
 

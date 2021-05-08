@@ -2,27 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15505955-37af-4060-a6fe-ce8317e2654f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../cloud-eureka-server/src/main/java/com/packt/eurekaserver/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cloud-gateway/src/main/java/com/packt/gateway/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cloud-gateway/src/main/resources/keystore/edge.p12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/AuthorizationServerConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/IntrospectEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/JwkSetEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/KeyConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/SubjectAttributeUserTokenConverter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/java/com/packt/authorizationserver/configuration/UserConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-authorization-server/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/configuration/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cloud-eureka-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-eureka-server/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cloud-eureka-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-eureka-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cloud-eureka-server/src/test/java/com/packt/eurekaserver/EurekaServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-eureka-server/src/test/java/com/packt/eurekaserver/EurekaServerApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cloud-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-gateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cloud-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cloud-config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-config-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cloud-config-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-config-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config-repo/product-composite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../config-repo/product-composite.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../microservice-review-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +40,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cloud-eureka-server" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -85,6 +77,9 @@
       <workItem from="1617958892316" duration="1372000" />
       <workItem from="1618037486779" duration="645000" />
       <workItem from="1618990708340" duration="1739000" />
+      <workItem from="1619457842710" duration="726000" />
+      <workItem from="1619494899538" duration="1547000" />
+      <workItem from="1619497038368" duration="683000" />
     </task>
     <task id="LOCAL-00001" summary="...">
       <created>1614948160321</created>
@@ -119,12 +114,14 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="511" y="128" width="951" height="857" key="CommitChangelistDialog2/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1614948159815" />
-    <state x="775" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1612507354541">
-      <screen x="64" y="27" width="1856" height="1053" />
+    <state x="780" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1619497067767">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="775" y="311" width="424" height="491" key="FileChooserDialogImpl/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1612507354541" />
-    <state width="1874" height="172" key="GridCell.Tab.0.bottom" timestamp="1619012735737">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="780" y="311" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497067767" />
+    <state x="780" y="311" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1619457900086" />
+    <state width="1354" height="172" key="GridCell.Tab.0.bottom" timestamp="1619497015453">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1802" height="339" key="GridCell.Tab.0.bottom/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
@@ -132,9 +129,9 @@
     <state width="1874" height="162" key="GridCell.Tab.0.bottom/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348274" />
     <state width="1810" height="245" key="GridCell.Tab.0.bottom/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
     <state width="1874" height="172" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1619012735737" />
-    <state width="1802" height="358" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334316" />
-    <state width="1874" height="172" key="GridCell.Tab.0.center" timestamp="1619012735737">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1354" height="172" key="GridCell.Tab.0.bottom/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497015453" />
+    <state width="1354" height="172" key="GridCell.Tab.0.center" timestamp="1619497015453">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1802" height="339" key="GridCell.Tab.0.center/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.center/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
@@ -142,9 +139,9 @@
     <state width="1874" height="162" key="GridCell.Tab.0.center/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348273" />
     <state width="1810" height="245" key="GridCell.Tab.0.center/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
     <state width="1874" height="172" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1619012735737" />
-    <state width="1802" height="358" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
-    <state width="1874" height="172" key="GridCell.Tab.0.left" timestamp="1619012735737">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1354" height="172" key="GridCell.Tab.0.center/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497015453" />
+    <state width="1354" height="172" key="GridCell.Tab.0.left" timestamp="1619497015453">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1802" height="339" key="GridCell.Tab.0.left/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.left/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
@@ -152,9 +149,9 @@
     <state width="1874" height="162" key="GridCell.Tab.0.left/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348273" />
     <state width="1810" height="245" key="GridCell.Tab.0.left/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869586" />
     <state width="1874" height="172" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1619012735737" />
-    <state width="1802" height="358" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
-    <state width="1874" height="172" key="GridCell.Tab.0.right" timestamp="1619012735737">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state width="1354" height="172" key="GridCell.Tab.0.left/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497015453" />
+    <state width="1354" height="172" key="GridCell.Tab.0.right" timestamp="1619497015453">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="1802" height="339" key="GridCell.Tab.0.right/0.27.1920.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1618061204055" />
     <state width="1874" height="253" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1614177404609" />
@@ -162,7 +159,7 @@
     <state width="1874" height="162" key="GridCell.Tab.0.right/64.27.1856.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1612504348274" />
     <state width="1810" height="245" key="GridCell.Tab.0.right/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1613897869587" />
     <state width="1874" height="172" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1619012735737" />
-    <state width="1802" height="358" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617958334315" />
+    <state width="1354" height="172" key="GridCell.Tab.0.right/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497015453" />
     <state x="498" y="198" width="1022" height="737" key="SettingsEditor" timestamp="1613897039551">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -172,6 +169,10 @@
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
     <state x="587" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2/64.27.1856.1053/1920.0.1920.1080@64.27.1856.1053" timestamp="1614948164063" />
+    <state x="428" y="407" key="com.intellij.ide.util.TipDialog" timestamp="1619497039131">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="428" y="407" key="com.intellij.ide.util.TipDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1619497039131" />
     <state x="586" y="257" width="802" height="599" key="new project wizard" timestamp="1612505219467">
       <screen x="64" y="27" width="1856" height="1053" />
     </state>
@@ -180,9 +181,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="660" y="252" width="672" height="677" key="run.anything.popup/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1617957642584" />
-    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1618990958180">
+    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1619457968030">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="659" y="259" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1618990958180" />
+    <state x="659" y="259" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1619457968030" />
   </component>
 </project>
