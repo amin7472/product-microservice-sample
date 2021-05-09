@@ -83,9 +83,9 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
                 values -> createProductAggregate((SecurityContext) values[0], (Product) values[1], (List<Recommendation>) values[2], (List<Review>) values[3], serviceUtil.getServiceAddress()),
                 ReactiveSecurityContextHolder.getContext().defaultIfEmpty(nullSC),
                 integration.getProduct(productId, delay, faultPercent)
-                        .onErrorReturn(CallNotPermittedException.class, getProductFallbackValue(productId))
-//                integration.getRecommendations(productId).collectList(),
-//                integration.getReviews(productId).collectList()
+                        .onErrorReturn(CallNotPermittedException.class, getProductFallbackValue(productId)),
+                integration.getRecommendations(productId).collectList(),
+                integration.getReviews(productId).collectList()
         )
                 .doOnError(ex -> LOG.warn("getCompositeProduct failed: {}", ex.toString()))
                 .log();

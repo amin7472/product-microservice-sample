@@ -12,6 +12,8 @@ services:
     build: cloud-config-server
     ports:
       - "8888:8888"
+    networks:
+      - my-network  
 
   eureka:
     environment:
@@ -19,7 +21,9 @@ services:
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     build: cloud-eureka-server
-
+    networks:
+      - my-network
+        
   gateway:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
@@ -28,6 +32,8 @@ services:
     build: cloud-gateway
     ports:
       - "8443:8443"
+    networks:
+      - my-network
        
   auth-server:
     environment:
@@ -35,6 +41,8 @@ services:
       - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
       - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
     build: microservice-authorization-server
+    networks:
+      - my-network
 
           
   product:
@@ -47,7 +55,9 @@ services:
     depends_on:
       - kafka
       - mongodb
-
+    networks:
+      - my-network
+      
   recommendation:
     build: microservice-recommendation-service
     environment:
@@ -58,7 +68,9 @@ services:
     depends_on:
       - kafka
       - mongodb
-
+    networks:
+      - my-network
+      
   review:
     build: microservice-review-service
     environment:
@@ -71,7 +83,9 @@ services:
         condition: service_healthy
       kafka:
         condition: service_started
-
+    networks:
+      - my-network
+      
   product-composite:
     build: microservice-product-composite-service
     environment:
@@ -81,13 +95,17 @@ services:
       - SPRING_CLOUD_STREAM_DEFAULTBINDER=kafka
     depends_on:
       - kafka
-
+    networks:
+      - my-network
+      
   mongodb:
     image: docker-hub.kian.digital/mongo:3.6.9
     ports:
       - "27017:27017"
     command: mongod --smallfiles
-
+    networks:
+      - my-network
+      
   mysql:
     image: docker-hub.kian.digital/mysql:5.7
     ports:
@@ -102,7 +120,9 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-      
+    networks:
+      - my-network
+        
   kafka:
     image: docker-hub.kian.digital/wurstmeister/kafka:2.12-2.1.0
     ports:
@@ -114,10 +134,31 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
     depends_on:
       - zookeeper
-
+    networks:
+      - my-network
+      
   zookeeper:
     image: docker-hub.kian.digital/wurstmeister/zookeeper:3.4.6
     ports:
       - "2181:2181"
     environment:
       - KAFKA_ADVERTISED_HOST_NAME=zookeeper
+    networks:
+      - my-network
+      
+  zipkin:
+    image: docker-hub.kian.digital/openzipkin/zipkin:2.12.9
+    mem_limit: 512m
+    networks:
+      - my-network
+    environment:
+      - STORAGE_TYPE=mem
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    ports:
+      - 9411:9411
+    depends_on:
+      - kafka    
+
+networks:
+  my-network:
+    name: my-network      
