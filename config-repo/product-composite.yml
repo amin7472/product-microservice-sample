@@ -56,7 +56,7 @@ ribbon.ServerListRefreshInterval: 5000
 ribbon.NFLoadBalancerPingInterval: 5
 
 spring.cloud.stream:
-  defaultBinder: kafka
+  defaultBinder: rabbit
   default.contentType: application/json
   bindings:
     output-products:
@@ -127,7 +127,3 @@ spring.cloud.stream.bindings.output-reviews.producer:
   partition-key-expression: payload.key
   partition-count: 2
 
----
-spring.profiles: kafka
-
-spring.cloud.stream.defaultBinder: kafka

@@ -11,23 +11,24 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 @EnableWebFluxSecurity
 public class SecurityConfig {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SecurityConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SecurityConfig.class);
 
-	@Bean
-	SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
-		http
-			.csrf().disable()
-			.authorizeExchange()
-				.pathMatchers("/headerrouting/**").permitAll()
-				.pathMatchers("/actuator/**").permitAll()
-				.pathMatchers("/eureka/**").permitAll()
-				.pathMatchers("/oauth/**").permitAll()
-				.pathMatchers("/config/**").permitAll()
-				.anyExchange().authenticated()
-				.and()
-			.oauth2ResourceServer()
-				.jwt();
-		return http.build();
-	}
+    @Bean
+    SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeExchange()
+                .pathMatchers("/headerrouting/**").permitAll()
+                .pathMatchers("/actuator/**").permitAll()
+                .pathMatchers("/eureka/**").permitAll()
+                .pathMatchers("/oauth/**").permitAll()
+                .pathMatchers("/auth-server/**").permitAll()
+                .pathMatchers("/config/**").permitAll()
+                .anyExchange().authenticated()
+                .and()
+                .oauth2ResourceServer()
+                .jwt();
+        return http.build();
+    }
 
 }

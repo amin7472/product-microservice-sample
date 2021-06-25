@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15505955-37af-4060-a6fe-ce8317e2654f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../cloud-config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-config-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cloud-config-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../cloud-config-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config-repo/product-composite.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../config-repo/product-composite.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeIntegration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/main/java/com/packt/productcompositeservice/services/ProductCompositeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-composite-service/src/test/java/com/packt/productcompositeservice/ProductCompositeServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-product-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/rest/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-product-service/src/main/java/com/packt/productservice/service/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-recommendation-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../microservice-review-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../microservice-review-service/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
