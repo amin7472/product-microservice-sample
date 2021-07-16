@@ -1,4 +1,0 @@
-encrypt:
-  key: secretkey
-server:
-  port: 8888

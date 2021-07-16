@@ -1,24 +1,9 @@
-app:
-  eureka-username: admin
-  eureka-password: admin  #admin'{cipher}8659e0af788d9a3a87b335172a837bdfc11ff49fefed2a2017dd6fd119c1341f'
-  eureka-server: localhost
-  auth-server: localhost
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: "http://${app.eureka-username}:${app.eureka-password}@${app.eureka-server}:8761/eureka/"
-    initialInstanceInfoReplicationIntervalSeconds: 5
-    registryFetchIntervalSeconds: 5
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 5
-
 spring.rabbitmq:
   host: 127.0.0.1
   port: 5672
-  username: guest
-  password: guest
+
+app:
+  auth-server: localhost
 
 spring.zipkin.sender.type: rabbit
 
@@ -33,7 +18,6 @@ spring.profiles: docker
 spring.rabbitmq.host: rabbitmq
 spring.cloud.stream.kafka.binder.brokers: kafka
 app:
-  eureka-server: eureka
   auth-server: auth-server
 ---
 spring.profiles: kafka

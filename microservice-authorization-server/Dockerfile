@@ -1,4 +1,4 @@
-FROM docker-hub.kian.digital/java:8-jdk
+FROM dockerhub.ir/java:8-jdk
 
 EXPOSE 9999
 
