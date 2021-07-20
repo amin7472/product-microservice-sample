@@ -1,5 +1,4 @@
 api:
-
   common:
     version: 1.0.0
     title: Sample API
@@ -7,14 +6,11 @@ api:
     termsOfServiceUrl: MINE TERMS OF SERVICE URL
     license: License
     licenseUrl: MY LICENSE URL
-
     contact:
       name: Contact
       url: My
       email: me@mail.com
-
   product-composite:
-
     get-composite-product:
       description: Returns a composite view of the specified product id
       notes: |
@@ -29,7 +25,6 @@ api:
         # Expected partial and error responses
         1. If no product information is found, a <b>404 - Not Found</b> error will be returned
         1. In no recommendations or reviews are found for a product, a partial response will be returned
-
     create-composite-product:
       description: Creates a composite product
       notes: |
@@ -39,7 +34,6 @@ api:
         # Expected error responses
         1. If a product with the same productId as specified in the posted information already exists,
            an <b>422 - Unprocessable Entity</b> error with a "duplicate key" error message will be returned
-
     delete-composite-product:
       description: Deletes a product composite
       notes: |
